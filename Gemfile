@@ -11,13 +11,13 @@ def linux_only(require_as)
   RbConfig::CONFIG['host_os'] =~ /linux/ && require_as
 end
 
-gem 'libnotify', :require => linux_only('libnotify')
-gem 'ruby_gntp', :require => darwin_only('ruby_gntp')
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
 group :development, :test do
+  gem 'libnotify', :require => linux_only('libnotify')
+  gem 'ruby_gntp', :require => darwin_only('ruby_gntp')
+  
   gem 'rspec-rails'
   gem 'guard-rspec'
   gem 'factory_girl_rails'
