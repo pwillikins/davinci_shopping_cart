@@ -23,7 +23,6 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'faker'
-  gem 'bcrypt-ruby', '~> 3.0.0'
   gem 'sqlite3'
 end
 
@@ -33,6 +32,7 @@ group :production do
   gem 'unicorn'
 end
 
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'

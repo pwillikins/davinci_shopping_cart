@@ -47,7 +47,7 @@ fruit_descriptions = [
 fruits.zip(fruit_descriptions).each do |fruit, description|
   Product.create!(name: fruit,
                   description: description,
-                  image_url: "fruit/#{fruit}.jpg",
+                  image_url: "fruit/#{fruit.downcase}.jpg",
                   price: sprintf("%.02f", rand * 9)
   )
 end
