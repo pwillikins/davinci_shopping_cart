@@ -6,4 +6,12 @@ table.products {
     width: 75px;
     border: 5px solid black;
   }
+
+  tr {
+    background-color: #bbb;
+  }
+
+  tr.odd {
+    background-color: #ff7c29;
+  }
 }
