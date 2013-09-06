@@ -1,4 +1,5 @@
 require "spec_helper"
+
 feature "Products management" do
   scenario "User creates a new product" do
     visit "/products/new"
