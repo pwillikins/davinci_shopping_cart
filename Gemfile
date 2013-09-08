@@ -26,6 +26,7 @@ group :development, :test do
   gem 'sqlite3'
 
   gem 'shoulda'
+  gem 'debugger'
 end
 
 group :production do
@@ -35,6 +36,8 @@ group :production do
 end
 
 gem 'bcrypt-ruby', '~> 3.0.0'
+
+gem 'will_paginate', '~> 3.0.0'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'

@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :product do
-    name { Faker::Commerce.product_name }
+    sequence(:name) { |number| "#{Faker::Commerce.product_name}_#{number}" }
     description {
       description = <<-DESCRIPTION
         These #{Faker::Commerce.color} #{name.pluralize}
