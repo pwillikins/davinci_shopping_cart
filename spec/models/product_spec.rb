@@ -14,5 +14,7 @@ describe Product do
     it { should allow_value("image.jpg").for(:image_url) }
     it { should allow_value("image.gif").for(:image_url) }
     it { should_not allow_value("image.txt").for(:image_url) }
+
+    it { should have_many(:line_items) }
   end
 end

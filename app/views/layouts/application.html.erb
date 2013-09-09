@@ -6,9 +6,23 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="<%= controller.controller_name %>">
 
-<%= yield %>
+  <div id="banner">
+    <%= image_tag("davinci_shopping.png") %>
+  </div>
 
+  <div id="columns">
+    <div id="side">
+      <ul>
+        <li><%= link_to 'Home', root_path %></li>
+        <li><%= link_to 'Admin', products_path %></li>
+      </ul>
+    </div>
+
+    <div id="main">
+      <%= yield %>
+    </div>
+  </div>
 </body>
 </html>
