@@ -11,22 +11,16 @@ def linux_only(require_as)
   RbConfig::CONFIG['host_os'] =~ /linux/ && require_as
 end
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0'
-
 group :development, :test do
   gem 'libnotify', :require => linux_only('libnotify')
   gem 'ruby_gntp', :require => darwin_only('ruby_gntp')
-  
   gem 'rspec-rails'
   gem 'guard-rspec'
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'faker'
   gem 'sqlite3'
-
   gem 'shoulda'
-  gem 'debugger'
 end
 
 group :production do
@@ -38,6 +32,9 @@ end
 gem 'bcrypt-ruby', '~> 3.0.0'
 
 gem 'will_paginate', '~> 3.0.0'
+
+# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'rails', '4.0.0'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'

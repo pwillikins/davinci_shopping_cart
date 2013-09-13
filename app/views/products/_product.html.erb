@@ -1,7 +1,9 @@
 <tr class='<%= cycle("odd", "") %>'>
-  <td><%= product.name %></td>
-  <td><%= product.description %></td>
-  <td><%= image_tag(product.image_url) %></td>
-  <td><%= number_to_currency(product.price) %></td>
-  <td><%= button_to 'Add to Cart', line_items_path(product_id: product) %></td>
+  <td class='name'><%= product.name %></td>
+  <td class='description'><%= product.description %></td>
+  <td class='picture'><%= image_tag(product.image_url) %></td>
+  <td class='price'><%= number_to_currency(product.price) %></td>
+  <td class='add_to_cart'>
+    <%= button_to 'Add to Cart', line_items_path(product_id: product) %>
+  </td>
 </tr>

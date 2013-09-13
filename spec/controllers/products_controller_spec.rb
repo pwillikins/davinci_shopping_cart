@@ -25,10 +25,10 @@ describe ProductsController do
   # adjust the attributes here as well.
   let(:valid_attributes) {
     {
-      "name"        => "MyString",
-      "description" => "MyDescription",
-      "price"       => "5.34",
-      "image_url"   => "my_product.png"
+        "name" => "MyString",
+        "description" => "MyDescription",
+        "image_url" => "some_image.png",
+        "price" => "9.54"
     }
   }
 

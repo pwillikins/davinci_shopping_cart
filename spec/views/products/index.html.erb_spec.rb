@@ -6,13 +6,13 @@ describe "products/index" do
       stub_model(Product,
         :name => "Name",
         :description => "MyText",
-        :image_url => "Image Url",
+        :image_url => "some_image.png",
         :price => "9.99"
       ),
       stub_model(Product,
         :name => "Name",
         :description => "MyText",
-        :image_url => "Image Url",
+        :image_url => "some_image.png",
         :price => "9.99"
       )
     ])
@@ -23,7 +23,7 @@ describe "products/index" do
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     assert_select "tr>td", :text => "Name".to_s, :count => 2
     assert_select "tr>td", :text => "MyText".to_s, :count => 2
-    assert_select "tr>td>img", :src => "Image Url".to_s, :count => 2
+    assert_select "tr>td>img", :src => "some_image.png".to_s, :count => 2
     assert_select "tr>td", :text => "$9.99".to_s, :count => 2
   end
 end

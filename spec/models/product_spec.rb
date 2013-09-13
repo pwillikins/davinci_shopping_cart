@@ -4,6 +4,7 @@ describe Product do
   describe "validations" do
     it { should validate_presence_of(:name) }
     it { should validate_uniqueness_of(:name) }
+
     it { should validate_presence_of(:description) }
     it { should validate_presence_of(:image_url) }
     it { should validate_presence_of(:price) }
@@ -16,5 +17,13 @@ describe Product do
     it { should_not allow_value("image.txt").for(:image_url) }
 
     it { should have_many(:line_items) }
+  end
+
+  it "should not allow deletion if there are associated line_items" do
+    product = FactoryGirl.create(:product)
+    product.line_items.create(:cart => FactoryGirl.create(:cart))
+
+    expect(product.destroy).to be_false
+    expect(product.errors.full_messages).to include("Line items are present")
   end
 end

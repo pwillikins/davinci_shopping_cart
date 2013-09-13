@@ -1,6 +1,6 @@
-require "spec_helper"
+require 'spec_helper'
 
-feature "Products management" do
+feature "Products Managment" do
   scenario "User creates a new product" do
     visit "/products/new"
     fill_in "Name", :with => "Apple"
@@ -32,7 +32,7 @@ feature "Products management" do
   end
 
   scenario "User views a list of products" do
-    product  = FactoryGirl.create(:product)
+    product = FactoryGirl.create(:product)
     product2 = FactoryGirl.create(:product)
 
     visit "/products"
@@ -65,4 +65,5 @@ feature "Products management" do
     expect(page).to_not have_selector("img[src$='#{product2.image_url}']")
     expect(page).to_not have_content(product2.price)
   end
+
 end
