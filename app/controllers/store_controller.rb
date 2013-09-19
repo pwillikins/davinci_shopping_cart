@@ -10,4 +10,9 @@ class StoreController < ApplicationController
 
   end
 
+  def empty_cart
+    @cart.line_items.clear
+    redirect_to my_cart_path, notice: "Your cart is currently empty"
+  end
+
 end
