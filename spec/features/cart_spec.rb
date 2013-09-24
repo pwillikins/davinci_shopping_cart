@@ -44,8 +44,8 @@ feature "Cart" do
     expect(page).to have_content("Quantity")
     expect(page).to have_content("Price")
     expect(page).to have_content("Total Price")
-
     expect(page).to have_content("Product #2")
+
     within('.quantity') do
       expect(page).to have_content("2")
     end
@@ -66,12 +66,33 @@ feature "Cart" do
     end
 
     within("#cart") do
-    expect(page).to have_content(product2.name)
+      expect(page).to have_content(product2.name)
     end
 
     click_button 'Empty Cart'
     expect(page).to have_content("Your cart is currently empty")
 
     expect(page).to have_selector('#cart', visible: false)
+  end
+
+  scenario "Visitor checks out" do
+    visit "/"
+
+    within("#product_#{product2.id}") do
+      click_button "Add to Cart"
+    end
+
+    click_button "Checkout"
+
+    fill_in "Name", with: "Bob Belcher"
+    fill_in "Address", with: "742 Evergreen Terrace\nSpringfield, Illinois, 62701"
+    fill_in "Email", with: "homer@simpsons.net"
+    select("Check", from: "Pay type")
+    click_button "Place Order"
+
+    expect(page).to have_content("Thank you for your order")
+    expect(page).to have_selector("#cart", visible: false
+                    )
+
   end
 end
