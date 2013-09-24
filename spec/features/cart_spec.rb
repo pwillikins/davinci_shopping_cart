@@ -23,21 +23,23 @@ feature "Cart" do
 
     visit "/"
 
-    within("#product_#{product2.id}") do
-      click_button 'Add to Cart'
-    end
-
-    expect(page).to have_content("Product added to cart")
-    expect(page).to have_content("View Cart (1 item)")
+    expect(page).to have_selector('#cart', visible: false)
 
     within("#product_#{product2.id}") do
       click_button 'Add to Cart'
     end
 
     expect(page).to have_content("Product added to cart")
-    expect(page).to have_content("View Cart (2 items)")
+    expect(page).to have_css("#cart tr", :count => 2)
 
-    click_link "View Cart (2 items)"
+    within("#product_#{product2.id}") do
+      click_button 'Add to Cart'
+    end
+
+    expect(page).to have_content("Product added to cart")
+    expect(page).to have_css("#cart tr", :count => 2)
+
+    #click_link "View Cart (2 items)"
     expect(page).to have_content("Name")
     expect(page).to have_content("Quantity")
     expect(page).to have_content("Price")
@@ -59,11 +61,17 @@ feature "Cart" do
       click_button 'Add to Cart'
     end
 
-    click_link "View Cart (1 item)"
+    within("table.cart") do
+      expect(page).to have_content(product2.name)
+    end
+
+    within("#cart") do
     expect(page).to have_content(product2.name)
+    end
 
     click_button 'Empty Cart'
     expect(page).to have_content("Your cart is currently empty")
-    expect(page).to_not have_content(product2.name)
+
+    expect(page).to have_selector('#cart', visible: false)
   end
 end

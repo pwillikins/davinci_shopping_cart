@@ -18,6 +18,12 @@
           <li><%= link_to 'Home', root_path %></li>
           <li><%= link_to 'Admin', products_path %></li>
         </ul>
+
+        <% if controller_name == 'store' %>
+            <%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
+                <%= render :partial => 'store/my_cart'%>
+            <% end %>
+        <% end %>
       </div>
 
       <div id="main">
